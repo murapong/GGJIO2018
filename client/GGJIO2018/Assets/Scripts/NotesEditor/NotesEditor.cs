@@ -56,14 +56,14 @@ public class NotesEditor : MonoBehaviour
     }
 
     /// <summary>
-    /// Writes the CS.
+    /// Writes the CSV.
     /// </summary>
     /// <param name="txt">Text.</param>
     public void WriteCSV(string txt)
     {
         StreamWriter streamWriter;
         FileInfo fileInfo;
-        fileInfo = new FileInfo(Application.dataPath + "/" + Config.TextFileName);
+        fileInfo = new FileInfo(Application.dataPath + "/Resources/" + Config.TextFileName);
         streamWriter = fileInfo.AppendText();
         streamWriter.WriteLine(txt);
         streamWriter.Flush();

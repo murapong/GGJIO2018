@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     int score = 0;
 
     /// <summary>
-    /// The time offset.
+    /// The time offset (for small adjestment).
     /// </summary>
     float timeOffset = -1f;
 
@@ -131,14 +131,11 @@ public class GameManager : MonoBehaviour
     {
         int i = 0;
 
-        //TODO:move fine name to config
-        TextAsset text = Resources.Load("NotesData") as TextAsset;
+        TextAsset text = Resources.Load(Path.GetFileNameWithoutExtension(Config.TextFileName)) as TextAsset;
         StringReader reader = new StringReader(text.text);
-
         while (reader.Peek() > -1)
         {
             string line = reader.ReadLine();
-            //            Debug.Log(line);
             timing[i] = float.Parse(line);
             i++;
         }

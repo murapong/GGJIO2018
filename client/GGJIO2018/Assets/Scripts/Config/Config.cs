@@ -1,4 +1,4 @@
 ﻿public class Config
 {
-    public const string TextFileName = "Resources/NotesData.txt";
+    public const string TextFileName = "NotesData.txt";
 }
