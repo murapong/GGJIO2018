@@ -863,9 +863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fa7d2d2886f4492b62ca6d991e1f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOffset: -1
   notes: {fileID: 1982748610640268, guid: e2f26fd731bdd4dd1af2e017f4aa3a6d, type: 2}
   startButton: {fileID: 989522401}
+  goodEffect: {fileID: 100000, guid: 206e628c7d66b7746a56ab3d91837979, type: 2}
+  badEffect: {fileID: 0}
   scoreText: {fileID: 1358386819}
 --- !u!1001 &1346040760
 Prefab:
@@ -1160,6 +1161,10 @@ Prefab:
     - target: {fileID: 4300510313952074, guid: 9d0f6519fd5ba4eedb784120afe6349f, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807602680776228, guid: 9d0f6519fd5ba4eedb784120afe6349f, type: 2}
+      propertyPath: m_TagString
+      value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d0f6519fd5ba4eedb784120afe6349f, type: 2}
