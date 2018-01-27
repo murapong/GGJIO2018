@@ -770,6 +770,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1615780244557908, guid: b6730444dc2d94f828b47434029f7aaa, type: 2}
+      propertyPath: m_TagString
+      value: GameMusic
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6730444dc2d94f828b47434029f7aaa, type: 2}
   m_IsPrefabParent: 0
@@ -863,10 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fa7d2d2886f4492b62ca6d991e1f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes: {fileID: 1982748610640268, guid: e2f26fd731bdd4dd1af2e017f4aa3a6d, type: 2}
   startButton: {fileID: 989522401}
-  goodEffect: {fileID: 100000, guid: 206e628c7d66b7746a56ab3d91837979, type: 2}
-  badEffect: {fileID: 0}
   scoreText: {fileID: 1358386819}
 --- !u!1001 &1346040760
 Prefab:

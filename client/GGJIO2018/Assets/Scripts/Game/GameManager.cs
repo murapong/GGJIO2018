@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
+        audioSource = GameObject.FindGameObjectWithTag(Tag.GameMusic).GetComponent<AudioSource>();
         timing = new float[1024];
         LoadCSV();
     }
