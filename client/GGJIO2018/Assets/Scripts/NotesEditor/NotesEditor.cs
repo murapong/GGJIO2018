@@ -89,8 +89,7 @@ public class NotesEditor : MonoBehaviour
 
     void Start()
     {
-        // TOOD:use tag
-        audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
+        audioSource = GameObject.FindGameObjectWithTag(Tag.GameMusic).GetComponent<AudioSource>();
     }
 
     void Update()
