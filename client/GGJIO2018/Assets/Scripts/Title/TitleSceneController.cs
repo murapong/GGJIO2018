@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 using UniRx;
 
 public class TitleSceneController : MonoBehaviour
@@ -39,7 +41,7 @@ public class TitleSceneController : MonoBehaviour
     void Start()
     {
         startButton.onClick.AsObservable().First()
-            .Subscribe(_ => Debug.Log("Go to Game."));
+            .Subscribe(_ => SceneManager.LoadScene(Scene.Game));
     }
 
     void Update()
