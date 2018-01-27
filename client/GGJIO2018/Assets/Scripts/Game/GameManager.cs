@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// The notes.
     /// </summary>
-    [SerializeField]
     GameObject notes;
 
     /// <summary>
@@ -38,13 +37,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// The good effect.
     /// </summary>
-    [SerializeField]
     GameObject goodEffect;
 
     /// <summary>
     /// The bad effect.
     /// </summary>
-    [SerializeField]
     GameObject badEffect;
 
     /// <summary>
@@ -96,6 +93,11 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         audioSource.Play();
         isPlaying = true;
+
+        // Preload object
+        goodEffect = Resources.Load("Game/GoodEffect") as GameObject;
+        badEffect = Resources.Load("Game/BadEffect") as GameObject;
+        notes = Resources.Load("Game/Notes") as GameObject;
     }
 
     #endregion
