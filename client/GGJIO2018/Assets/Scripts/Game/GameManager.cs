@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// The time offset.
     /// </summary>
-    float timeOffset = -1;
+    float timeOffset = -1f;
 
     #endregion
 
