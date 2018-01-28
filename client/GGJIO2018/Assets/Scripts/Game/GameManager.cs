@@ -29,20 +29,22 @@ public class GameManager : MonoBehaviour
     GameObject notes;
 
     /// <summary>
-    /// The start button.
+    /// The title panel.
     /// </summary>
     [SerializeField]
-    GameObject startButton;
+    GameObject titlePanel;
 
     /// <summary>
-    /// The good effect.
+    /// The game panel.
     /// </summary>
-    GameObject goodEffect;
+    [SerializeField]
+    GameObject gamePanel;
 
     /// <summary>
-    /// The bad effect.
+    /// The line object.
     /// </summary>
-    GameObject badEffect;
+    [SerializeField]
+    GameObject lineObject;
 
     /// <summary>
     /// The score text.
@@ -89,14 +91,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        startButton.SetActive(false);
+        titlePanel.SetActive(false);
+        gamePanel.SetActive(true);
+        lineObject.SetActive(true);
+
         startTime = Time.time;
         audioSource.Play();
         isPlaying = true;
 
         // Preload object
-        goodEffect = Resources.Load("Game/GoodEffect") as GameObject;
-        badEffect = Resources.Load("Game/BadEffect") as GameObject;
         notes = Resources.Load("Game/Notes") as GameObject;
     }
 
@@ -159,6 +162,10 @@ public class GameManager : MonoBehaviour
         audioSource = GameObject.FindGameObjectWithTag(Tag.GameMusic).GetComponent<AudioSource>();
         timing = new float[1024];
         LoadCSV();
+
+        titlePanel.SetActive(true);
+        gamePanel.SetActive(false);
+        lineObject.SetActive(false);
     }
 
     void Update()
@@ -177,9 +184,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void AddScore()
     {
-        var go = Instantiate(goodEffect);
-        Destroy(go, 0.5f);
         score++;
+    }
+
+    /// <summary>
+    /// Reduces the score.
+    /// </summary>
+    public void ReduceScore()
+    {
+        score--;
     }
 
     #endregion
