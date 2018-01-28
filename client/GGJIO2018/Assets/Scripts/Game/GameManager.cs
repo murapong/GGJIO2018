@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,16 +42,28 @@ public class GameManager : MonoBehaviour
     GameObject gamePanel;
 
     /// <summary>
+    /// The result panel.
+    /// </summary>
+    [SerializeField]
+    GameObject resultPanel;
+
+    /// <summary>
     /// The line object.
     /// </summary>
     [SerializeField]
     GameObject lineObject;
 
     /// <summary>
-    /// The score text.
+    /// The game score text.
     /// </summary>
     [SerializeField]
-    Text scoreText;
+    Text gameScoreText;
+
+    /// <summary>
+    /// The result score text.
+    /// </summary>
+    [SerializeField]
+    Text resultScoreText;
 
     /// <summary>
     /// Where game is playing or not.
@@ -61,6 +74,11 @@ public class GameManager : MonoBehaviour
     /// The array of timing.
     /// </summary>
     float[] timing;
+
+    /// <summary>
+    /// The length of the audio.
+    /// </summary>
+    float audioLength;
 
     /// <summary>
     /// The notes count.
@@ -93,6 +111,7 @@ public class GameManager : MonoBehaviour
     {
         titlePanel.SetActive(false);
         gamePanel.SetActive(true);
+        resultPanel.SetActive(false);
         lineObject.SetActive(true);
 
         startTime = Time.time;
@@ -101,6 +120,14 @@ public class GameManager : MonoBehaviour
 
         // Preload object
         notes = Resources.Load("Game/Notes") as GameObject;
+    }
+
+    /// <summary>
+    /// Retries the game.
+    /// </summary>
+    public void RetryGame()
+    {
+        SceneManager.LoadScene(Scene.Game);   
     }
 
     #endregion
@@ -165,7 +192,9 @@ public class GameManager : MonoBehaviour
 
         titlePanel.SetActive(true);
         gamePanel.SetActive(false);
+        resultPanel.SetActive(false);
         lineObject.SetActive(false);
+        audioLength = audioSource.clip.length;
     }
 
     void Update()
@@ -176,7 +205,17 @@ public class GameManager : MonoBehaviour
         }
 
         CheckNextNotes();
-        scoreText.text = "Score : " + score;
+        gameScoreText.text = score.ToString();
+
+        // after end of audio + 1.0f
+        if (GetMusicTime() - 1.0f >= audioLength)
+        {
+            isPlaying = false;
+            gamePanel.SetActive(false);
+            resultPanel.SetActive(true);
+            lineObject.SetActive(false);
+            resultScoreText.text = score.ToString();
+        }
     }
 
     /// <summary>
